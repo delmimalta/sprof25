@@ -19,22 +19,14 @@ systemctl enable --now httpd2
 apt-get install -y php8.2 php8.2-{mbstring,sockets,gd,xmlreader,pgsql,ldap,openssl}
 
 
-echo "GET READY TO CHANGE"
-nano /etc/php/8.2/apache2-mod_php/php.ini
+echo "DONE - DO FURTHER then UNCOMMENT"
 
 
-systemctl restrart httpd2
+#systemctl enable --now zabbix_pgsql
+#apt-get install zabbix-phpfrontend-{apache2,php8.2} -y
+#ln -s /etc/httpd2/conf/addon.d/A.zabbix.conf /etc/httpd2/conf/extra-enabled
+#chown apache2:apache2 /var/www/webapps/zabbix/ui/conf
+#systemctl restrart httpd2
 
 
-echo "GET READY TO CHANGE ONCE AGAIN"
-nano /etc/zabbix/zabbix_server.conf
-
-
-systemctl enable --now zabbix_pgsql
-apt-get install zabbix-phpfrontend-{apache2,php8.2} -y
-ln -s /etc/httpd2/conf/addon.d/A.zabbix.conf /etc/httpd2/conf/extra-enabled
-chown apache2:apache2 /var/www/webapps/zabbix/ui/conf
-systemctl restrart httpd2
-
-
-echo "DONE - CAN DO FURTHER"
+#echo "DONE - CAN DO FURTHER"
