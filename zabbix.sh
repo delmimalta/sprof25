@@ -19,7 +19,7 @@ systemctl enable --now httpd2
 apt-get install -y php8.2 php8.2-{mbstring,sockets,gd,xmlreader,pgsql,ldap,openssl}
 
 
-echo "DONE - DO FURTHER then UNCOMMENT"
+echo "DONE - DO FURTHER then UNCOMMENT and COMMENT PREVIOUS"
 
 
 #systemctl enable --now zabbix_pgsql
