@@ -7,7 +7,6 @@ su - postgres -s /bin/sh -c 'createuser --no-superuser --no-createdb --no-create
 
 echo "Type Password - zabbixpwd"
 
-
 su - postgres -s /bin/sh -c 'createdb -O zabbix zabbix'
 systemctl restart postgresql
 su - postgres -s /bin/sh -c 'psql -U zabbix -f /usr/share/doc/zabbix-common-database-pgsql-*/schema.sql zabbix'
