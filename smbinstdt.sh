@@ -10,22 +10,23 @@ done
 grep -q KRB5RCACHETYPE /etc/sysconfig/bind || echo 'KRB5RCACHETYPE="none"' >> /etc/sysconfig/bind
 grep -q 'bind-dns' /etc/bind/named.conf || echo 'include "/var/lib/samba/bind-dns/named.conf";' >> /etc/bind/named.conf
 
+echo ""
+echo "DONE - DO FURTHER then UNCOMMENT and COMMENT PREVIOUS"
+echo ""
 
-echo "DONE - DO FURTHER then UNCOMMENT"
+#rm -f /etc/samba/smb.conf
+#rm -rf /var/lib/samba
+#rm -rf /var/cache/samba
+#mkdir -p /var/lib/samba/sysvol
 
+#samba-tool domain join au.team DC -Uadministrator --realm=au.team --dns-backend=BIND9_DLZ
 
-rm -f /etc/samba/smb.conf
-rm -rf /var/lib/samba
-rm -rf /var/cache/samba
-mkdir -p /var/lib/samba/sysvol
+#systemctl enable --now samba
+#systemctl enable --now bind
 
-samba-tool domain join au.team DC -Uadministrator --realm=au.team --dns-backend=BIND9_DLZ
+#samba-tool drs replicate srv1-dt.au.team srv1-hq.au.team dc=au,dc=team -Uadministrator
+#samba-tool drs replicate srv1-hq.au.team srv1-dt.au.team dc=au,dc=team -Uadministrator
 
-systemctl enable --now samba
-systemctl enable --now bind
-
-samba-tool drs replicate srv1-dt.au.team srv1-hq.au.team dc=au,dc=team -Uadministrator
-samba-tool drs replicate srv1-hq.au.team srv1-dt.au.team dc=au,dc=team -Uadministrator
-
-
-echo "DONE - CAN DO FURTHER"
+#echo ""
+#echo "DONE - CAN DO FURTHER"
+#echo ""
