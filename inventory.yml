@@ -1,0 +1,20 @@
+all:
+  children:
+    networking:
+      hosts:
+        R-DT:
+        R-HQ:
+
+    servers:
+      hosts:
+        SRV1-HQ:
+        SRV1-DT:
+        SRV2-DT:
+        SRV3-DT:
+
+    clients:
+      hosts:
+        ADMIN-HQ:
+        ADMIN-DT:
+        CLI-HQ:
+        CLI-DT:

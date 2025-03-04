@@ -1,0 +1,10 @@
+[Unit]
+Description=Backup /opt/data
+
+[Service]
+Type=oneshot
+ExecStart=/bin/tar -czf "var/bac/SAMBA.tar.gz" /opt/data
+
+[Install]
+WantedBy=multi-user.target
+
