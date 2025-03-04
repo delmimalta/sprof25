@@ -5,9 +5,9 @@ apt-get update && apt-get install -y postgresql16-server zabbix-server-pgsql
 systemctl enable --now postgresql
 su - postgres -s /bin/sh -c 'createuser --no-superuser --no-createdb --no-createrole --encrypted --pwprompt zabbix'
 
-
+echo ""
 echo "Type Password - zabbixpwd"
-
+echo ""
 
 su - postgres -s /bin/sh -c 'createdb -O zabbix zabbix'
 systemctl restart postgresql
@@ -18,23 +18,16 @@ apt-get install -y apache2 apache2-mod_php8.2
 systemctl enable --now httpd2
 apt-get install -y php8.2 php8.2-{mbstring,sockets,gd,xmlreader,pgsql,ldap,openssl}
 
+echo ""
+echo "DONE - DO FURTHER then UNCOMMENT and COMMENT PREVIOUS"
+echo ""
 
-echo "GET READY TO CHANGE"
-nano /etc/php/8.2/apache2-mod_php/php.ini
+#systemctl enable --now zabbix_pgsql
+#apt-get install zabbix-phpfrontend-{apache2,php8.2} -y
+#ln -s /etc/httpd2/conf/addon.d/A.zabbix.conf /etc/httpd2/conf/extra-enabled
+#chown apache2:apache2 /var/www/webapps/zabbix/ui/conf
+#systemctl restrart httpd2
 
-
-systemctl restrart httpd2
-
-
-echo "GET READY TO CHANGE ONCE AGAIN"
-nano /etc/zabbix/zabbix_server.conf
-
-
-systemctl enable --now zabbix_pgsql
-apt-get install zabbix-phpfrontend-{apache2,php8.2} -y
-ln -s /etc/httpd2/conf/addon.d/A.zabbix.conf /etc/httpd2/conf/extra-enabled
-chown apache2:apache2 /var/www/webapps/zabbix/ui/conf
-systemctl restrart httpd2
-
-
-echo "DONE - CAN DO FURTHER"
+#echo ""
+#echo "DONE - CAN DO FURTHER"
+#echo ""
