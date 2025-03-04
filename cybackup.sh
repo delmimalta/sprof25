@@ -3,7 +3,7 @@
 apt-get update && apt-get dist-upgrade -y && update-kernel -y && apt-get clean && reboot
 
 echo ""
-echo "DONE - UNCOMMENT AFTER REBOOT"
+echo "DONE - UNCOMMENT them COMMEINT PREVIOUS but AFTER REBOOT"
 echo ""
 
 #apt-get install kernel-source-<x.x>
