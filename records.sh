@@ -22,10 +22,11 @@ samba-tool dns add 127.0.0.1 au-team.irpo cli-hq A 192.168.11.1
 samba-tool dns add 127.0.0.1 au-team.irpo srv1-hq A 192.168.11.33
 
 
+echo "DONE - A RECORDS"
+
+
 samba-tool dns zonecreate 127.0.0.1 11.168.192.in-addr.arpa
-
 samba-tool dns zonecreate 127.0.0.1 33.168.192.in-addr.arpa
-
 
 samba-tool dns add 127.0.0.1 33.168.192.in-addr.arpa 50 PTR r-dt.au-team.irpo
 samba-tool dns add 127.0.0.1 33.168.192.in-addr.arpa 49 PTR fw-dt.au-team.irpo
@@ -48,5 +49,12 @@ samba-tool dns add 127.0.0.1 11.168.192.in-addr.arpa 41 PTR admin-hq.au-team.irp
 samba-tool dns add 127.0.0.1 11.168.192.in-addr.arpa 1 PTR cli-hq.au-team.irpo
 samba-tool dns add 127.0.0.1 11.168.192.in-addr.arpa 33 PTR srv1-hq.au-team.irpo
 
+
+echo "DONE - PTR RECORDS"
+
+
 samba-tool dns add 127.0.0.1 au-team.irpo www CNAME srv1-dt.au-team.irpo -U administrator
 samba-tool dns add 127.0.0.1 au-team.irpo zabbix CNAME srv1-dt.au-team.irpo -U administrator
+
+
+echo "DONE - CNAME RECORDS"
