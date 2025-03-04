@@ -1,0 +1,51 @@
+SAMBA DNS:
+
+wget raw.githubusercontent.com/delmimalta/sprof25/refs/heads/main/smbinsthq.sh
+
+wget raw.githubusercontent.com/delmimalta/sprof25/refs/heads/main/smbrecs.sh
+
+wget raw.githubusercontent.com/delmimalta/sprof25/refs/heads/main/smbusers.sh
+
+wget raw.githubusercontent.com/delmimalta/sprof25/refs/heads/main/smbinstdt.sh
+
+
+
+Backups:
+
+wget raw.githubusercontent.com/delmimalta/sprof25/refs/heads/main/backup.service
+
+wget raw.githubusercontent.com/delmimalta/sprof25/refs/heads/main/backup.timer
+
+
+
+Docker:
+
+wget raw.githubusercontent.com/delmimalta/sprof25/refs/heads/main/index.html
+
+
+
+Zabbix:
+
+wget raw.githubusercontent.com/delmimalta/sprof25/refs/heads/main/zabbix.sh
+
+
+
+Proxy:
+
+wget raw.githubusercontent.com/delmimalta/sprof25/refs/heads/main/proxy.conf
+
+
+
+Ansible:
+
+wget raw.githubusercontent.com/delmimalta/sprof25/refs/heads/main/inventory.yml
+
+wget raw.githubusercontent.com/delmimalta/sprof25/refs/heads/main/networking.yml
+
+wget raw.githubusercontent.com/delmimalta/sprof25/refs/heads/main/all.yml
+
+
+
+CyberBackup:
+
+wget raw.githubusercontent.com/delmimalta/sprof25/refs/heads/main/cybackup.sh
