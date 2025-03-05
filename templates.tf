@@ -13,3 +13,40 @@ resource "local_file" "save_inventory" {
    content  = data.template_file.inventory.rendered
    filename = "/home/altlinux/bin/ansible/inventory"
 }
+
+
+
+
+
+
+
+
+
+
+
+
+#data "template_file" "web1_wg0" {
+#    template =  file("/home/altlinux/bin/_templates/web1_wg0.tpl")
+
+#    vars = {
+#      floatingip_webadm = join("",[openstack_networking_floatingip_v2.floatingip_webadm.address])
+#    }
+#}
+
+#resource "local_file" "save_web1_wg0" {
+#   content  = data.template_file.web1_wg0.rendered
+#   filename = "/home/altlinux/bin/ansible/wireguard/web1_wg0.conf"
+#}
+
+#data "template_file" "web2_wg0" {
+#    template =  file("/home/altlinux/bin/_templates/web2_wg0.tpl")
+
+#    vars = {
+#     floatingip_webadm = join("",[openstack_networking_floatingip_v2.floatingip_webadm.address])
+#  }
+#}
+
+#resource "local_file" "save_web2_wg0" {
+#   content  = data.template_file.web2_wg0.rendered
+#   filename = "/home/altlinux/bin/ansible/wireguard/web2_wg0.conf"
+#}
