@@ -127,3 +127,38 @@ resource "openstack_lb_member_v2" "member_web2_https" {
   address       = "192.168.200.22"
   protocol_port = "80"
 }
+
+
+
+
+
+
+
+
+
+
+
+
+# Создаём проверку доступности инстансов в целевой группе HTTP
+
+
+resource "openstack_lb_monitor_v2" "monitor_http" {
+  name        = "monitor HTTP"
+  pool_id     = openstack_lb_pool_v2.pool_http.id
+  type        = "PING"
+  delay       = "10"
+  timeout     = "4"
+  max_retries = "5"
+}
+
+# Создаём проверку доступности инстансов в целевой группе HTTPS
+
+
+resource "openstack_lb_monitor_v2" "monitor_https" {
+  name        = "monitor HTTPS"
+  pool_id     = openstack_lb_pool_v2.pool_https.id
+  type        = "PING"
+  delay       = "10"
+  timeout     = "4"
+  max_retries = "5"
+}
