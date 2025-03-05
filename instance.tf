@@ -83,7 +83,7 @@ resource "openstack_compute_interface_attach_v2" "controlvm" {
 #    delete_on_termination = true
 #  }
 
-  network {
-    port = openstack_networking_port_v2.port_web2.id
-  }
-}
+#  network {
+#    port = openstack_networking_port_v2.port_web2.id
+#  }
+#}
