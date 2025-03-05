@@ -1,0 +1,79 @@
+---
+- name: Install packages
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Install Wireguard
+      community.general.apt_rpm:
+        name:
+          - wireguard-tools
+          - wireguard-tools-wg-quick
+        state: latest
+        update_cache: true
+
+- name: Settings WebAdm Wireguard server
+  hosts: WebADM
+  become: true
+
+  tasks:
+    - name: Create directory '/etc/wireguard'
+      ansible.builtin.file:
+        path: /etc/wireguard
+        state: directory
+        mode: '0755'
+
+    - name: Copy file 'wg0.conf'
+      ansible.builtin.copy:
+        src: wireguard/webadm_wg0.conf
+        dest: /etc/wireguard/wg0.conf
+
+    - name: Started and enabled wg0
+      ansible.builtin.systemd:
+        name: wg-quick@wg0
+        state: started
+        enabled: true
+
+- name: Settings WEB1 Wireguard client
+  hosts: WEB1
+  become: true
+
+  tasks:
+    - name: Create directory '/etc/wireguard'
+      ansible.builtin.file:
+        path: /etc/wireguard
+        state: directory
+        mode: '0755'
+
+    - name: Copy file 'wg0.conf'
+      ansible.builtin.copy:
+        src: wireguard/web1_wg0.conf
+        dest: /etc/wireguard/wg0.conf
+
+    - name: Started and enabled wg0
+      ansible.builtin.systemd:
+        name: wg-quick@wg0
+        state: started
+        enabled: true
+
+- name: Settings WEB2 Wireguard client
+  hosts: WEB2
+  become: true
+
+  tasks:
+    - name: Create directory '/etc/wireguard'
+      ansible.builtin.file:
+        path: /etc/wireguard
+        state: directory
+        mode: '0755'
+
+    - name: Copy file 'wg0.conf'
+      ansible.builtin.copy:
+        src: wireguard/web2_wg0.conf
+        dest: /etc/wireguard/wg0.conf
+
+    - name: Started and enabled wg0
+      ansible.builtin.systemd:
+        name: wg-quick@wg0
+        state: started
+        enabled: true
