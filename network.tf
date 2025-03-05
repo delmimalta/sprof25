@@ -116,30 +116,30 @@ resource "openstack_networking_router_interface_v2" "router_interface" {
 # Создадим плавающий IP для инстанса WebADM
 
 
-resource "openstack_networking_floatingip_v2" "floatingip_webadm" {
-  pool = "public"
-}
+#resource "openstack_networking_floatingip_v2" "floatingip_webadm" {
+#  pool = "public"
+#}
 
 # Создадим плавающий IP для инстанса WEB1
 
 
-resource "openstack_networking_floatingip_v2" "floatingip_web1" {
-  pool = "public"
-}
+#resource "openstack_networking_floatingip_v2" "floatingip_web1" {
+#  pool = "public"
+#}
 
 # Создадим плавающий IP для инстанса WEB2
 
 
-resource "openstack_networking_floatingip_v2" "floatingip_web2" {
-  pool = "public"
-}
+#resource "openstack_networking_floatingip_v2" "floatingip_web2" {
+#  pool = "public"
+#}
 
 # Создадим плавающий IP для балансировщика нагрузки Load Balancer
 
 
-resource "openstack_networking_floatingip_v2" "floatingip_loadbalancer" {
-  pool = "public"
-}
+#resource "openstack_networking_floatingip_v2" "floatingip_loadbalancer" {
+#  pool = "public"
+#}
 
 
 
@@ -155,34 +155,34 @@ resource "openstack_networking_floatingip_v2" "floatingip_loadbalancer" {
 # Создадим для WebADM ассоциацию плавающего IP и порт (публичного и приватного IP адресов)
 
 
-resource "openstack_networking_floatingip_associate_v2" "association_webadm" {
-  port_id     = openstack_networking_port_v2.port_webadm.id
-  floating_ip = openstack_networking_floatingip_v2.floatingip_webadm.address
-}
+#resource "openstack_networking_floatingip_associate_v2" "association_webadm" {
+#  port_id     = openstack_networking_port_v2.port_webadm.id
+#  floating_ip = openstack_networking_floatingip_v2.floatingip_webadm.address
+#}
 
 # Создадим для WEB1 ассоциацию плавающего IP и порт (публичного и приватного IP адресов)
 
 
-resource "openstack_networking_floatingip_associate_v2" "association_web1" {
-  port_id     = openstack_networking_port_v2.port_web1.id
-  floating_ip = openstack_networking_floatingip_v2.floatingip_web1.address
-}
+#resource "openstack_networking_floatingip_associate_v2" "association_web1" {
+#  port_id     = openstack_networking_port_v2.port_web1.id
+#  floating_ip = openstack_networking_floatingip_v2.floatingip_web1.address
+#}
 
 # Создадим для WEB2 ассоциацию плавающего IP и порт (публичного и приватного IP адресов)
 
 
-resource "openstack_networking_floatingip_associate_v2" "association_web2" {
-  port_id     = openstack_networking_port_v2.port_web2.id
-  floating_ip = openstack_networking_floatingip_v2.floatingip_web2.address
-}
+#resource "openstack_networking_floatingip_associate_v2" "association_web2" {
+#  port_id     = openstack_networking_port_v2.port_web2.id
+#  floating_ip = openstack_networking_floatingip_v2.floatingip_web2.address
+#}
 
 # Создадим для Load Balancer ассоциацию плавающего IP и порт (публичного и приватного IP адресов)
 
 
-resource "openstack_networking_floatingip_associate_v2" "association_loadbalancer" {
-  port_id     = openstack_networking_port_v2.port_loadbalancer.id
-  floating_ip = openstack_networking_floatingip_v2.floatingip_loadbalancer.address
-}
+#resource "openstack_networking_floatingip_associate_v2" "association_loadbalancer" {
+#  port_id     = openstack_networking_port_v2.port_loadbalancer.id
+#  floating_ip = openstack_networking_floatingip_v2.floatingip_loadbalancer.address
+#}
 
 
 
@@ -198,15 +198,65 @@ resource "openstack_networking_floatingip_associate_v2" "association_loadbalance
 # Создаём группу безопасности для ICMP
 
 
-resource "openstack_networking_secgroup_v2" "secgroup_1" {
-  name = "ICMP"
-  description = "ICMP"
-}
+#resource "openstack_networking_secgroup_v2" "secgroup_1" {
+#  name = "ICMP"
+#  description = "ICMP"
+#}
 
 # Создаём группу безопасности для SSH
 
 
-resource "openstack_networking_secgroup_v2" "secgroup_2" {
-  name = "SSH"
-  description = "SSH"
-}
+#resource "openstack_networking_secgroup_v2" "secgroup_2" {
+#  name = "SSH"
+#  description = "SSH"
+#}
+
+
+
+
+
+
+
+
+
+
+
+
+# Назначим группы (ICMP, SSH, VPN) безопасности на порт для инстанса WebADM
+
+
+#resource "openstack_networking_port_secgroup_associate_v2" "security_group_associate_webadm" {
+#    port_id            = openstack_networking_port_v2.port_webadm.id
+#    enforce            = true
+#    security_group_ids = [
+#      openstack_networking_secgroup_v2.secgroup_1.id,
+#      openstack_networking_secgroup_v2.secgroup_2.id,
+#      openstack_networking_secgroup_v2.secgroup_4.id
+#    ]
+#}
+
+# Назначим группы (ICMP, SSH, WEB) безопасности на порт для инстанса WEB1
+
+
+#resource "openstack_networking_port_secgroup_associate_v2" "security_group_associate_web1" {
+#    port_id            = openstack_networking_port_v2.port_web1.id
+#    enforce            = true
+#    security_group_ids = [
+#      openstack_networking_secgroup_v2.secgroup_1.id,
+#      openstack_networking_secgroup_v2.secgroup_2.id,
+#      openstack_networking_secgroup_v2.secgroup_3.id
+#    ]
+#}
+
+# Назначим группы (ICMP, SSH, WEB) безопасности на порт для инстанса WEB2
+
+
+#resource "openstack_networking_port_secgroup_associate_v2" "security_group_associate_web2" {
+#    port_id            = openstack_networking_port_v2.port_web2.id
+#    enforce            = true
+#    security_group_ids = [
+#      openstack_networking_secgroup_v2.secgroup_1.id,
+#     openstack_networking_secgroup_v2.secgroup_2.id,
+#      openstack_networking_secgroup_v2.secgroup_3.id
+#    ]
+#}
